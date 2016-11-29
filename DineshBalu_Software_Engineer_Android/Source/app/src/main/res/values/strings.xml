@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">me_crossover</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email Address</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_username">This username is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="manager_sign_in_navigation">Are you a conference manager?\nSign in here</string>
+    <string name="forgot_password_navigation">Forgot Password? Click Here !!</string>
+    <string name="signup_navigation">Don\'t have an account?\nSign up Here !!</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
+    <string name="action_reset_password">Reset Password</string>
+    <string name="signin_navigation">Remembered Password? Signin Here !!</string>
+    <string name="prompt_fullname">Full Name</string>
+    <string name="action_register">Register</string>
+    <string name="register_signin_navigation">Already have an account? Sign In here!!!</string>
+    <string name="prompt_title">Title</string>
+    <string name="prompt_event_date_time"><![CDATA[Date & Time]]></string>
+    <string name="prompt_venue">Venue</string>
+    <string name="prompt_description">Description</string>
+    <string name="action_schedule_conference">Register Schedule</string>
+    <string name="action_suggest_topic">Suggest Topic</string>
+    <string name="prompt_specialization">Specialization Area</string>
+    <string name="prompt_topic">Topic</string>
+</resources>
