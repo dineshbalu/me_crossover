@@ -32,4 +32,11 @@
     <string name="action_suggest_topic">Suggest Topic</string>
     <string name="prompt_specialization">Specialization Area</string>
     <string name="prompt_topic">Topic</string>
+    <string name="title_activity_schedular">Schedule Conference</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="prompt_conference_title">Conference Title</string>
+    <string name="prompt_conference_desc">Detail</string>
+    <string name="prompt_conference_from_date">Start date</string>
+    <string name="prompt_conference_to_date">End Date</string>
+    <string name="prompt_conference_venue">Venue</string>
 </resources>

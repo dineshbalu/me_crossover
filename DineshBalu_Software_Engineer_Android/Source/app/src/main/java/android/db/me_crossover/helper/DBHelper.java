@@ -1,5 +1,6 @@
 package android.db.me_crossover.helper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.database.Cursor;
@@ -7,14 +8,15 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.db.me_crossover.model.Conference;
 import android.db.me_crossover.model.User;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * Created by dineshbalu on 27/11/16.
@@ -23,7 +25,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "conference_db.sqlite";
     private static final String TABLE_USER = "user";
+    private static final String TABLE_CONFERENCE = "conference";
     private static String DB_PATH = "";
+
+    private static DBHelper mHelper; //Singleton instance
+
     private Context mContext;
     private SQLiteDatabase mDataBase;
 
@@ -59,7 +65,6 @@ public class DBHelper extends SQLiteOpenHelper {
         if(dbexist) {
             System.out.println(" Database exists.");
         } else {
-            this.getReadableDatabase();
                 copydatabase();
 
         }
@@ -138,6 +143,53 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         else
             return null;
+
+    }
+
+    public ArrayList<Conference> getConferences() {
+
+        Cursor c = mDataBase.query( TABLE_CONFERENCE , null , null , null , null , null , null );
+
+        ArrayList<Conference> items = new ArrayList<>();
+
+        if( c != null && c.getCount() > 0 ) {
+
+            c.moveToFirst();
+
+            while( !c.isClosed() ){
+                items.add( new Conference(c) );
+
+                if( c.isLast() )
+                    c.close();
+                else
+                    c.moveToNext();
+
+            }
+
+        }
+
+        return items;
+    }
+
+    public static DBHelper getInstance(Context context) {
+
+        if( mHelper == null )
+            mHelper = new DBHelper(context);
+
+        return mHelper;
+    }
+
+    public void scheduleConference(String title, String detail, String startDate, String endDate, String venue, int manager) {
+
+        ContentValues values = new ContentValues();
+        values.put( "conference" , title );
+        values.put( "description" , detail );
+        values.put( "from_date" , startDate );
+        values.put( "to_date" , endDate );
+        values.put( "venue" , venue );
+        values.put( "manager" , manager );
+
+            mDataBase.insert( TABLE_CONFERENCE , null , values );
 
     }
 }
